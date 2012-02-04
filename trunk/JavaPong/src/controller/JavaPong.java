@@ -6,6 +6,8 @@ public class JavaPong {
 	}
 	
 	public static void main(String[] args) {
+		System.out.println("Seriously... get a f*cking life");
+		
 		new JavaPong();
 	}
 }
