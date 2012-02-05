@@ -3,8 +3,8 @@ package model;
 public class PlayerBoard extends VisualEntity {
 	private PongImage	image;
 	
-	public PlayerBoard(double xPos, double yPos, PongImage image, Game game) {
-		super(xPos, yPos, image, game);
+	public PlayerBoard(VectXY pos, PongImage image, Game game) {
+		super(pos, image, game);
 		// TODO Auto-generated constructor stub
 	}
 	

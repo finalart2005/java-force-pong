@@ -2,16 +2,14 @@ package model;
 
 public class PhysicsEntity extends VisualEntity implements TickableEntity {
 	
-	private double	xVel, yVel;
+	private VectXY	velocity;
 	
-	public PhysicsEntity(double xPos, double yPos, PongImage image, Game game) {
-		super(xPos, yPos, image, game);
+	public PhysicsEntity(VectXY pos, PongImage image, Game game) {
+		super(pos, image, game);
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
 	public void tick() {
-		setXPos(getXPos() + game.TIMESTEP * xVel);
-		setYPos(getYPos() + game.TIMESTEP * yVel);
+		getPos().add(VectXY.multiply(velocity, game.TIMESTEP));
 	}
 }

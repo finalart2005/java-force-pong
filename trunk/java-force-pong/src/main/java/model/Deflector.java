@@ -1,13 +1,10 @@
 package model;
 
 public class Deflector {
-	double	xMin, yMin, xMax, yMax;
+	VectXY	posMin, posMax;
 	
-	public Deflector(double xMin, double yMin, double xMax, double yMax) {
-		this.xMin = xMin;
-		this.yMin = yMin;
-		this.xMax = xMax;
-		this.yMax = yMax;
+	public Deflector(VectXY posMin, VectXY posMax) {
+		this.posMin = posMin;
+		this.posMax = posMax;
 	}
-	
 }

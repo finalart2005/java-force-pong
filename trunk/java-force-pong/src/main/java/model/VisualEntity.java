@@ -2,13 +2,12 @@ package model;
 
 public class VisualEntity extends Entity {
 	
-	private double		xPos, yPos;
+	private VectXY		pos;
 	private PongImage	image;
 	
-	public VisualEntity(double xPos, double yPos, PongImage image, Game game) {
+	public VisualEntity(VectXY pos, PongImage image, Game game) {
 		super(game);
-		this.xPos = xPos;
-		this.yPos = yPos;
+		this.pos = pos.clone();
 		this.image = image;
 	}
 	
@@ -16,19 +15,11 @@ public class VisualEntity extends Entity {
 		return image;
 	}
 	
-	public void setXPos(double xPos) {
-		this.xPos = xPos;
+	public void setPos(VectXY pos) {
+		this.pos = pos.clone();
 	}
 	
-	public void setYPos(double yPos) {
-		this.yPos = yPos;
-	}
-	
-	public double getXPos() {
-		return xPos;
-	}
-	
-	public double getYPos() {
-		return yPos;
+	public VectXY getPos() {
+		return pos;
 	}
 }

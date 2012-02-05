@@ -17,7 +17,7 @@ public class Window {
 	private Game		game;
 	public JFrame		frame;
 	private PaintPanel	paintPanel;
-	private boolean		setPause = false;
+	private boolean		setPause	= false;
 	
 	public Window(final int width, final int height, Game game) {
 		this.game = game;
@@ -27,6 +27,10 @@ public class Window {
 				createAndShowGUI(width, height);
 			}
 		});
+	}
+	
+	public Game getGame() {
+		return game;
 	}
 	
 	private void createAndShowGUI(int width, int height) {
@@ -54,10 +58,10 @@ public class Window {
 		JMenu options = new JMenu("Options");
 		JMenu about = new JMenu("About");
 		
-		JMenuItem start= new JMenuItem("Start");
+		JMenuItem start = new JMenuItem("Start");
 		start.addActionListener(new MenuListener(this));
 		file.add(start);
-	
+		
 		JMenuItem pause = new JMenuItem("Pause");
 		pause.addActionListener(new MenuListener(this));
 		file.add(pause);

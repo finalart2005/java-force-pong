@@ -62,4 +62,22 @@ public class PaintPanel extends JPanel {
 		g.fillOval(listener.mouseLocation.x - width / 2, listener.mouseLocation.y - height / 2, width, height);
 	}
 	
+	public void pause(int seconds) {
+		Timer pauseTimer = new Timer(1, listener);
+		timer.start();
+		
+	}
+	
+	public void pause() {
+		timer.stop();
+	}
+	
+	public void start() {
+		timer.start();
+	}
+	
+	public Timer getTimer() {
+		return timer;
+	}
+	
 }
