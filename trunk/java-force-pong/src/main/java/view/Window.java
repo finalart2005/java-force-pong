@@ -55,8 +55,8 @@ public class Window {
 		// Set up the menu bar, which appears above the content pane.
 		JMenuBar menuBar = new JMenuBar();
 		JMenu file = new JMenu("File");
-		JMenu options = new JMenu("Options");
-		options.addMouseListener(new MenuListener(this));
+		JMenuItem options = new JMenuItem("Options");
+		options.addActionListener(new MenuListener(this));
 		JMenu about = new JMenu("About");
 		
 		JMenuItem start = new JMenuItem("Start");
