@@ -32,7 +32,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>controller.Flumilyzer</mainClass>
+              <mainClass>nl.google.code.JavaPong.controller.JavaPong</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
