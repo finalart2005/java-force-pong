@@ -15,4 +15,14 @@ public class Player {
 	public int getLives() {
 		return lives;
 	}
+	
+	public int lowerLives() 
+	{
+		for(int i = 5; i > 0; i --)
+		{
+			lives --;
+		}
+		return lives;
+	}
 }
+
