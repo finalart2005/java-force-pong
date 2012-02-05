@@ -69,6 +69,8 @@ public class PaintPanelListener extends MouseInputAdapter implements ActionListe
 		leftButton = e.getButton() == MouseEvent.BUTTON1 ? false : leftButton;
 		middleButton = e.getButton() == MouseEvent.BUTTON2 ? false : middleButton;
 		rightButton = e.getButton() == MouseEvent.BUTTON3 ? false : rightButton;
+		
+		log.info("Some button was pressed! Waaaaaa!");
 	}
 	
 	@Override
@@ -76,7 +78,7 @@ public class PaintPanelListener extends MouseInputAdapter implements ActionListe
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		paintPanel.phase = (paintPanel.phase + .05) % 1;
+		// paintPanel.phase = (paintPanel.phase + .05) % 1;
 		paintPanel.repaint();
 	}
 	

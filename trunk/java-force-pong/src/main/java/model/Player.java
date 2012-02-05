@@ -1,8 +1,9 @@
 package model;
 
 public class Player {
-	private String	name;
-	private int		lives;
+	private String		name;
+	private int			lives;
+	private PlayArea	playArea;
 	
 	public Player(String name) {
 		this.name = name;
@@ -16,13 +17,10 @@ public class Player {
 		return lives;
 	}
 	
-	public int lowerLives() 
-	{
-		for(int i = 5; i > 0; i --)
-		{
-			lives --;
+	public int lowerLives() {
+		for (int i = 5; i > 0; i--) {
+			lives--;
 		}
 		return lives;
 	}
 }
-

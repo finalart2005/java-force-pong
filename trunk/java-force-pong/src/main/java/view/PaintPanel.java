@@ -47,14 +47,14 @@ public class PaintPanel extends JPanel {
 		
 		Random random = new Random();
 		
-		for (int i = 0; i < 1000; i++) {
-			int x = random.nextInt(getWidth());
-			int y = random.nextInt(getHeight());
-			int width = random.nextInt(30) + 20;
-			int height = random.nextInt(30) + 20;
-			g.setColor(new Color(random.nextInt(1 << 23)));
-			g.fillOval(x, y, width, height);
-		}
+		// for (int i = 0; i < 1000; i++) {
+		// int x = random.nextInt(getWidth());
+		// int y = random.nextInt(getHeight());
+		// int width = random.nextInt(30) + 20;
+		// int height = random.nextInt(30) + 20;
+		// g.setColor(new Color(random.nextInt(1 << 23)));
+		// g.fillOval(x, y, width, height);
+		// }
 		
 		g.setColor(Color.RED);
 		int width = (int) (Math.cos(Math.PI * 2 * phase) * 60 + 100);
