@@ -1,0 +1,12 @@
+Java-force-pong
+
+Afhankelijk van aantal spelers vorm van de map aanpassen (3 spelers == driehoekig speelveld)
+Als speler doodgaat -> speelveld aanpassen
+
+Bij 2 spelers: HEAD-TO-HEAD!!! (classic pong)
+
+PlayArea:
+- Elke speler heeft PlayArea met daarin definitie voor waar hij allemaal heen kan bewegen
+- Deflectors hierin
+- Breedte van plankje
+- Snelheid van plankje? 
