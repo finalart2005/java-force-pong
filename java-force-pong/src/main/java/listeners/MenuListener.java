@@ -30,9 +30,7 @@ public class MenuListener implements ActionListener {
 				log.info("Exit program");
 				System.exit(0);
 			}
-		}
-		
-		if (e.getSource() instanceof JMenu) {
+		} else if (e.getSource() instanceof JMenu) {
 			JMenu source = (JMenu) e.getSource();
 			log.info("WindowListener - actionPerformed - source: JMenu - name: {}", source.getText());
 			
