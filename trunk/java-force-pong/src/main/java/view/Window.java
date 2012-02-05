@@ -56,6 +56,7 @@ public class Window {
 		JMenuBar menuBar = new JMenuBar();
 		JMenu file = new JMenu("File");
 		JMenu options = new JMenu("Options");
+		options.addMouseListener(new MenuListener(this));
 		JMenu about = new JMenu("About");
 		
 		JMenuItem start = new JMenuItem("Start");
@@ -69,10 +70,6 @@ public class Window {
 		JMenuItem exit = new JMenuItem("Exit");
 		exit.addActionListener(new MenuListener(this));
 		file.add(exit);
-		
-		JMenuItem settings = new JMenuItem("Settings");
-		settings.addActionListener(new MenuListener(this));
-		options.add(settings);
 		
 		JMenuItem help = new JMenuItem("Help");
 		help.addActionListener(new MenuListener(this));
