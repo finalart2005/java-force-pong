@@ -79,7 +79,10 @@ public class PaintPanelListener extends MouseInputAdapter implements ActionListe
 	
 	public void actionPerformed(ActionEvent e) {
 		// paintPanel.phase = (paintPanel.phase + .05) % 1;
-		paintPanel.repaint();
+		if (e.getSource() == paintPanel.getTimer()) {
+			paintPanel.window.getGame().tick();
+			paintPanel.repaint();
+		}
 	}
 	
 	public void componentHidden(ComponentEvent arg0) {

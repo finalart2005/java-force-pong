@@ -17,7 +17,9 @@ public class Game {
 	
 	public void tick() {
 		for (Entity entity : entityList) {
-			entity.tick();
+			if (entity instanceof TickableEntity) {
+				((TickableEntity) (entity)).tick();
+			}
 		}
 	}
 	
