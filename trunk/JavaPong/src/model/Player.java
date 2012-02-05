@@ -18,8 +18,9 @@ public class Player {
 	}
 	
 	public int lowerLives() {
-		for(this.lives = lives; lives > 0; lives --){
-			
+		int i = 0;
+		for(i = 5; i > 0; i --){
+			lives --;
 		}
 		return lives;
 	}
