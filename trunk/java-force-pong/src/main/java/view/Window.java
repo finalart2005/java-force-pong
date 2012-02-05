@@ -17,6 +17,7 @@ public class Window {
 	private Game		game;
 	public JFrame		frame;
 	private PaintPanel	paintPanel;
+	private boolean		setPause = false;
 	
 	public Window(final int width, final int height, Game game) {
 		this.game = game;
@@ -49,13 +50,33 @@ public class Window {
 		
 		// Set up the menu bar, which appears above the content pane.
 		JMenuBar menuBar = new JMenuBar();
-		JMenu menu = new JMenu("File");
+		JMenu file = new JMenu("File");
+		JMenu options = new JMenu("Options");
+		JMenu about = new JMenu("About");
 		
-		JMenuItem menuItem = new JMenuItem("Exit");
-		menuItem.addActionListener(new MenuListener(this));
-		menu.add(menuItem);
+		JMenuItem start= new JMenuItem("Start");
+		start.addActionListener(new MenuListener(this));
+		file.add(start);
+	
+		JMenuItem pause = new JMenuItem("Pause");
+		pause.addActionListener(new MenuListener(this));
+		file.add(pause);
 		
-		menuBar.add(menu);
+		JMenuItem exit = new JMenuItem("Exit");
+		exit.addActionListener(new MenuListener(this));
+		file.add(exit);
+		
+		JMenuItem settings = new JMenuItem("Settings");
+		settings.addActionListener(new MenuListener(this));
+		options.add(settings);
+		
+		JMenuItem help = new JMenuItem("Help");
+		help.addActionListener(new MenuListener(this));
+		about.add(help);
+		
+		menuBar.add(file);
+		menuBar.add(options);
+		menuBar.add(about);
 		frame.setJMenuBar(menuBar);
 		
 		// Show the window.
