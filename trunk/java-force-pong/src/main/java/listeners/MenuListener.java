@@ -2,9 +2,11 @@ package listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.event.MouseInputAdapter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import view.OptionsWindow;
 import view.Window;
 
-public class MenuListener implements ActionListener {
+public class MenuListener extends MouseInputAdapter implements ActionListener {
 	private static final Logger	log	= LoggerFactory.getLogger(MenuListener.class);
 	
 	public Window				window;
@@ -30,7 +32,12 @@ public class MenuListener implements ActionListener {
 				log.info("Exit program");
 				System.exit(0);
 			}
-		} else if (e.getSource() instanceof JMenu) {
+		}
+	}
+	
+	@Override
+	public void mousePressed(MouseEvent e) {
+		if (e.getSource() instanceof JMenu) {
 			JMenu source = (JMenu) e.getSource();
 			log.info("WindowListener - actionPerformed - source: JMenu - name: {}", source.getText());
 			
