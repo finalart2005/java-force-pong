@@ -9,4 +9,17 @@ PlayArea:
 - Elke speler heeft PlayArea met daarin definitie voor waar hij allemaal heen kan bewegen
 - Deflectors hierin
 - Breedte van plankje
-- Snelheid van plankje? 
+- Snelheid van plankje?
+
+Bonussen:
+- Bal sneller
+- Bal trager
+- Bal sneller na raken plank
+- Bal trager na raken plank
+
+Physics:
+- hoek van terugkeer = hoek van inval + afwijking op basis van afstand van het midden van het plankje (krom plankje), handig voor sturen bal
+- deflectorset in game object om snel toegang te geven aan alle deflectors in het spel
+
+Game:
+-  

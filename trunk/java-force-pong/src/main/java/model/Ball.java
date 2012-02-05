@@ -1,14 +1,13 @@
 package model;
 
-public class Ball extends Item {
+public class Ball extends PhysicsEntity {
 	
-	public Ball(PongImage image) {
-		super(image);
+	public Ball(double xPos, double yPos, PongImage image, Game game) {
+		super(xPos, yPos, image, game);
 		// TODO Auto-generated constructor stub
-		
 	}
 	
-	public double getBallCoordinates(){
+	public double getBallCoordinates() {
 		return 0;
 	}
 }

@@ -5,17 +5,19 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Game {
+	List<Player>				playerList	= new ArrayList<Player>();
+	List<Entity>				entityList	= new LinkedList<Entity>();
 	
-	List<Player>	playerList	= new ArrayList<Player>();
-	List<Item>		itemList	= new LinkedList<Item>();
+	public static final int		FPS			= 25;
+	public static final double	TIMESTEP	= 1.0 / FPS;
 	
 	public Game() {
 		
 	}
 	
 	public void tick() {
-		for (Item item : itemList) {
-			item.tick();
+		for (Entity entity : entityList) {
+			entity.tick();
 		}
 	}
 	

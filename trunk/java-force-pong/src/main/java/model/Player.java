@@ -1,11 +1,13 @@
 package model;
 
-public class Player {
+public class Player extends Entity {
 	private String		name;
 	private int			lives;
-	private PlayArea	playArea;
+	private PlayerArea	playerArea;
+	private PlayerBoard	playerBoard;
 	
-	public Player(String name) {
+	public Player(String name, Game game) {
+		super(game);
 		this.name = name;
 	}
 	

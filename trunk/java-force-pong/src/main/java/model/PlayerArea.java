@@ -3,10 +3,10 @@ package model;
 import java.util.HashSet;
 import java.util.Set;
 
-public class PlayArea {
+public class PlayerArea {
 	private Set<Deflector>	deflectorSet	= new HashSet<Deflector>();
 	
-	public PlayArea() {
+	public PlayerArea() {
 		
 	}
 	
