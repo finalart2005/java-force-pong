@@ -22,7 +22,7 @@ public class Game {
 	
 	public int getNumPlayers()
 	{
-		return numPlayers;
+		return 0 /* aantal spelers die meedoen */;
 	}
 	
 	public void addPlayer(Player player) {
