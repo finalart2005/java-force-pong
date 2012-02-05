@@ -32,7 +32,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>nl.google.code.JavaPong.controller.JavaPong</mainClass>
+              <mainClass>controller.JavaPong</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
