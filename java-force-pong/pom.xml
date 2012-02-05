@@ -32,7 +32,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.google.code.java-force-pong.controller.JavaPong</mainClass>
+              <mainClass>controller.JavaPong</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
