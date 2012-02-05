@@ -26,7 +26,9 @@ public class PaintPanel extends JPanel {
 		
 		setBackground(new Color(0, 0, 32));
 		
-		setDoubleBuffered(true);
+		setDoubleBuffered(true); // eliminates the need to implement double
+									// buffering by yourself using an off screen
+									// image
 	}
 	
 	public void buildListener() {
