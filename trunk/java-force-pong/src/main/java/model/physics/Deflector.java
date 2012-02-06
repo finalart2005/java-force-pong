@@ -1,4 +1,6 @@
-package model;
+package model.physics;
+
+import model.util.VectXY;
 
 public class Deflector {
 	VectXY	posMin, posMax;

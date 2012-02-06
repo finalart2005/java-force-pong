@@ -1,4 +1,6 @@
-package model;
+package model.entity;
+
+import model.Game;
 
 public class Entity {
 	protected Game	game;

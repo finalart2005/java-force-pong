@@ -1,4 +1,4 @@
-package model;
+package model.physics;
 
 public class Force {
 	

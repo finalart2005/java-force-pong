@@ -1,4 +1,4 @@
-package model;
+package model.util;
 
 public class VectXY {
 	public double	x, y;

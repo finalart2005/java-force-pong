@@ -1,4 +1,7 @@
-package model;
+package model.player;
+
+import model.Game;
+import model.entity.Entity;
 
 public class Player extends Entity {
 	private String		name;

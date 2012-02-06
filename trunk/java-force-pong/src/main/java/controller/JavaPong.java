@@ -5,7 +5,7 @@ import model.Game;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import view.Window;
+import view.MainWindow;
 
 public class JavaPong {
 	private static final Logger	log	= LoggerFactory.getLogger(JavaPong.class);
@@ -14,7 +14,7 @@ public class JavaPong {
 	
 	private JavaPong() {
 		game = new Game();
-		new Window(512, 512, game);
+		new MainWindow(512, 512, game);
 	}
 	
 	public static void main(String[] args) {

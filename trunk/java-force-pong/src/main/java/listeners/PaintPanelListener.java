@@ -14,13 +14,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import view.PaintPanel;
-import view.Window;
+import view.MainWindow;
 
 public class PaintPanelListener extends MouseInputAdapter implements ActionListener, ComponentListener {
 	private static final Logger	log				= LoggerFactory.getLogger(PaintPanelListener.class);
 	
 	private PaintPanel			paintPanel;
-	private Window				window;
+	private MainWindow				window;
 	
 	public Point				mouseLocation	= new Point();
 	
