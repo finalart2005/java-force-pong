@@ -10,11 +10,11 @@ import listeners.OptionsWindowListener;
 import model.Game;
 
 public class OptionsWindow extends JFrame {
-	private Window					window;
+	private MainWindow					window;
 	private Game					game;
 	private OptionsWindowListener	listener;
 	
-	public OptionsWindow(Window window, Game game) {
+	public OptionsWindow(MainWindow window, Game game) {
 		super("Options");
 		this.window = window;
 		this.game = game;
@@ -26,7 +26,7 @@ public class OptionsWindow extends JFrame {
 		});
 	}
 	
-	public Window getWindow() {
+	public MainWindow getWindow() {
 		return window;
 	}
 	

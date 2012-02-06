@@ -1,17 +1,21 @@
-package model;
+package model.entity;
+
+import model.Game;
+import model.util.Image;
+import model.util.VectXY;
 
 public class VisualEntity extends Entity {
 	
 	private VectXY		pos;
-	private PongImage	image;
+	private Image	image;
 	
-	public VisualEntity(VectXY pos, PongImage image, Game game) {
+	public VisualEntity(VectXY pos, Image image, Game game) {
 		super(game);
 		this.pos = pos.clone();
 		this.image = image;
 	}
 	
-	public PongImage getImage() {
+	public Image getImage() {
 		return image;
 	}
 	

@@ -12,14 +12,14 @@ import listeners.PaintPanelListener;
 public class PaintPanel extends JPanel {
 	private static final long	serialVersionUID	= -7295356920540343651L;
 	
-	public Window				window;
+	public MainWindow				window;
 	
 	private PaintPanelListener	listener;
 	private Timer				timer;
 	
 	public double				phase;
 	
-	public PaintPanel(Window window) {
+	public PaintPanel(MainWindow window) {
 		this.window = window;
 		
 		buildListener();

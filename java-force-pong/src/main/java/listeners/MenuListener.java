@@ -11,15 +11,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import view.OptionsWindow;
-import view.Window;
+import view.MainWindow;
 
 public class MenuListener implements ActionListener {
 	private static final Logger	log	= LoggerFactory.getLogger(MenuListener.class);
 	
-	private Window				window;
+	private MainWindow				window;
 	private Game				game;
 	
-	public MenuListener(Window window, Game game) {
+	public MenuListener(MainWindow window, Game game) {
 		this.window = window;
 		this.game = game;
 	}

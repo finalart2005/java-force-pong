@@ -13,14 +13,14 @@ import javax.swing.JPanel;
 import listeners.MenuListener;
 import model.Game;
 
-public class Window extends JFrame {
+public class MainWindow extends JFrame {
 	private Game			game;
 	private PaintPanel		paintPanel;
 	private MenuListener	menuListener;
 	
 	private boolean			setPause	= false;
 	
-	public Window(final int width, final int height, Game game) {
+	public MainWindow(final int width, final int height, Game game) {
 		super("Java Force Pong");
 		this.game = game;
 		
