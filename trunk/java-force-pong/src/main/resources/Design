@@ -16,6 +16,13 @@ Bonussen:
 - Bal trager
 - Bal sneller na raken plank
 - Bal trager na raken plank
+- Speelveld gaat draaien
+- Leven erbij
+- Bal bevriest eerstvolgende plankje
+- Aantrekkingskracht naar jouw kant
+- Afstotingskracht van jouw kant
+- Plankje wordt breed
+- Plankje wordt smal
 
 Physics:
 - hoek van terugkeer = hoek van inval + afwijking op basis van afstand van het midden van het plankje (krom plankje), handig voor sturen bal

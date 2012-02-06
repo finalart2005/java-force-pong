@@ -31,6 +31,7 @@ public class PaintPanelListener extends MouseInputAdapter implements ActionListe
 	public PaintPanelListener(PaintPanel paintPanel) {
 		this.paintPanel = paintPanel;
 		window = paintPanel.window;
+		window.getGame().getTimer().addActionListener(this);
 	}
 	
 	@Override
@@ -79,7 +80,7 @@ public class PaintPanelListener extends MouseInputAdapter implements ActionListe
 	
 	public void actionPerformed(ActionEvent e) {
 		// paintPanel.phase = (paintPanel.phase + .05) % 1;
-		if (e.getSource() == paintPanel.getTimer()) {
+		if (e.getSource() == window.getGame().getTimer()) {
 			paintPanel.window.getGame().tick();
 			paintPanel.repaint();
 		}

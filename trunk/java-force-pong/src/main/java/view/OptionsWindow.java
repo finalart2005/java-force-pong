@@ -6,16 +6,18 @@ import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import listeners.OptionsWindowListener;
 import model.Game;
 
-public class OptionsWindow {
-	private Window	window;
-	private Game	game;
-	public JFrame	frame;
+public class OptionsWindow extends JFrame {
+	private Window					window;
+	private Game					game;
+	private OptionsWindowListener	listener;
 	
-	public OptionsWindow(Window window) {
+	public OptionsWindow(Window window, Game game) {
+		super("Options");
 		this.window = window;
-		game = window.getGame();
+		this.game = game;
 		
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -24,13 +26,20 @@ public class OptionsWindow {
 		});
 	}
 	
+	public Window getWindow() {
+		return window;
+	}
+	
 	private void createAndShowGUI() {
 		// Create and set up the window.
-		frame = new JFrame("Options");
-		frame.setResizable(false);
+		setResizable(false);
+		
+		listener = new OptionsWindowListener(this);
+		addWindowListener(listener);
+		System.out.println("blaa");
 		
 		// Set up the content pane, where the "main GUI" lives.
-		Container contentPane = frame.getContentPane();
+		Container contentPane = getContentPane();
 		JPanel frameContents = new JPanel();
 		frameContents.setLayout(new BorderLayout(5, 5));
 		
@@ -43,11 +52,7 @@ public class OptionsWindow {
 		contentPane.validate();
 		
 		// Show the window.
-		frame.pack();
-		frame.setVisible(true);
-	}
-	
-	public void repaint() {
-		frame.repaint();
+		pack();
+		setVisible(true);
 	}
 }

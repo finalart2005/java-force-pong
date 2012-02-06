@@ -10,6 +10,8 @@ import javax.swing.Timer;
 import listeners.PaintPanelListener;
 
 public class PaintPanel extends JPanel {
+	private static final long	serialVersionUID	= -7295356920540343651L;
+	
 	public Window				window;
 	
 	private PaintPanelListener	listener;
@@ -61,23 +63,4 @@ public class PaintPanel extends JPanel {
 		int height = (int) (Math.sin(Math.PI * 2 * phase) * 60 + 100);
 		g.fillOval(listener.mouseLocation.x - width / 2, listener.mouseLocation.y - height / 2, width, height);
 	}
-	
-	public void pause(int seconds) {
-		Timer pauseTimer = new Timer(1, listener);
-		timer.start();
-		
-	}
-	
-	public void pause() {
-		timer.stop();
-	}
-	
-	public void start() {
-		timer.start();
-	}
-	
-	public Timer getTimer() {
-		return timer;
-	}
-	
 }

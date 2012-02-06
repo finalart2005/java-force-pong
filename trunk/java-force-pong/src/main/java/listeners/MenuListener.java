@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JMenuItem;
 
+import model.Game;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,10 +16,12 @@ import view.Window;
 public class MenuListener implements ActionListener {
 	private static final Logger	log	= LoggerFactory.getLogger(MenuListener.class);
 	
-	public Window				window;
+	private Window				window;
+	private Game				game;
 	
-	public MenuListener(Window window) {
+	public MenuListener(Window window, Game game) {
 		this.window = window;
+		this.game = game;
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -30,7 +34,9 @@ public class MenuListener implements ActionListener {
 				System.exit(0);
 			} else if (source.getText() == "Options") {
 				log.info("Options");
-				new OptionsWindow(window);
+				game.pause();
+				window.setEnabled(false);
+				new OptionsWindow(window, game);
 			}
 		}
 	}
