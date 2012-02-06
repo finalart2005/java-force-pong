@@ -13,13 +13,15 @@ import javax.swing.JPanel;
 import listeners.MenuListener;
 import model.Game;
 
-public class Window {
-	private Game		game;
-	public JFrame		frame;
-	private PaintPanel	paintPanel;
-	private boolean		setPause	= false;
+public class Window extends JFrame {
+	private Game			game;
+	private PaintPanel		paintPanel;
+	private MenuListener	menuListener;
+	
+	private boolean			setPause	= false;
 	
 	public Window(final int width, final int height, Game game) {
+		super("Java Force Pong");
 		this.game = game;
 		
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -35,11 +37,10 @@ public class Window {
 	
 	private void createAndShowGUI(int width, int height) {
 		// Create and set up the window.
-		frame = new JFrame("Java Force Pong");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		// Set up the content pane, where the "main GUI" lives.
-		Container contentPane = frame.getContentPane();
+		Container contentPane = getContentPane();
 		JPanel frameContents = new JPanel();
 		frameContents.setLayout(new BorderLayout(5, 5));
 		
@@ -53,39 +54,36 @@ public class Window {
 		contentPane.validate();
 		
 		// Set up the menu bar, which appears above the content pane.
+		menuListener = new MenuListener(this, game);
 		JMenuBar menuBar = new JMenuBar();
-		JMenu file = new JMenu("File");
-		JMenuItem options = new JMenuItem("Options");
-		options.addActionListener(new MenuListener(this));
-		JMenu about = new JMenu("About");
+		JMenu fileMenu = new JMenu("File");
+		JMenuItem optionsMenuItem = new JMenuItem("Options");
+		optionsMenuItem.addActionListener(menuListener);
+		JMenu helpMenu = new JMenu("Help");
 		
-		JMenuItem start = new JMenuItem("Start");
-		start.addActionListener(new MenuListener(this));
-		file.add(start);
+		JMenuItem startMenuItem = new JMenuItem("Start");
+		startMenuItem.addActionListener(menuListener);
+		fileMenu.add(startMenuItem);
 		
-		JMenuItem pause = new JMenuItem("Pause");
-		pause.addActionListener(new MenuListener(this));
-		file.add(pause);
+		JMenuItem pauseMenuItem = new JMenuItem("Pause");
+		pauseMenuItem.addActionListener(menuListener);
+		fileMenu.add(pauseMenuItem);
 		
-		JMenuItem exit = new JMenuItem("Exit");
-		exit.addActionListener(new MenuListener(this));
-		file.add(exit);
+		JMenuItem exitMenuItem = new JMenuItem("Exit");
+		exitMenuItem.addActionListener(menuListener);
+		fileMenu.add(exitMenuItem);
 		
-		JMenuItem help = new JMenuItem("Help");
-		help.addActionListener(new MenuListener(this));
-		about.add(help);
+		JMenuItem aboutMenuItem = new JMenuItem("About");
+		aboutMenuItem.addActionListener(menuListener);
+		helpMenu.add(aboutMenuItem);
 		
-		menuBar.add(file);
-		menuBar.add(options);
-		menuBar.add(about);
-		frame.setJMenuBar(menuBar);
+		menuBar.add(fileMenu);
+		menuBar.add(optionsMenuItem);
+		menuBar.add(helpMenu);
+		setJMenuBar(menuBar);
 		
 		// Show the window.
-		frame.pack();
-		frame.setVisible(true);
-	}
-	
-	public void repaint() {
-		frame.repaint();
+		pack();
+		setVisible(true);
 	}
 }

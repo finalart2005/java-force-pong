@@ -4,15 +4,25 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.Timer;
+
+import listeners.GameListener;
+
 public class Game {
-	List<Player>				playerList	= new ArrayList<Player>();
-	List<Entity>				entityList	= new LinkedList<Entity>();
+	List<Player>				playerList		= new ArrayList<Player>();
+	List<Entity>				entityList		= new LinkedList<Entity>();
 	
-	public static final int		FPS			= 25;
-	public static final double	TIMESTEP	= 1.0 / FPS;
+	public static final int		FPS				= 50;
+	public static final int		TIMESTEP_MILLIS	= 1000 / FPS;
+	public static final double	TIMESTEP		= TIMESTEP_MILLIS / 1000.0;
+	
+	private GameListener		gameListener;
+	private Timer				timer;
 	
 	public Game() {
-		
+		gameListener = new GameListener(this);
+		timer = new Timer(TIMESTEP_MILLIS, gameListener);
+		start();
 	}
 	
 	public void tick() {
@@ -29,5 +39,23 @@ public class Game {
 	
 	public void addPlayer(Player player) {
 		playerList.add(player);
+	}
+	
+	public void pause(int seconds) {
+		pause();
+		Timer pauseTimer = new Timer(TIMESTEP_MILLIS, gameListener);
+		pauseTimer.start();
+	}
+	
+	public void pause() {
+		timer.stop();
+	}
+	
+	public void start() {
+		timer.start();
+	}
+	
+	public Timer getTimer() {
+		return timer;
 	}
 }
