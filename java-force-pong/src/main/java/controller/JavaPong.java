@@ -18,7 +18,7 @@ public class JavaPong {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println("Rick is still a fucking idiot!");
+		System.out.println("Tim is a frickin' moron!");
 		
 		new JavaPong();
 	}
