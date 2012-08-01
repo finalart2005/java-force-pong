@@ -1,5 +1,7 @@
 package model.util;
 
+import java.util.Set;
+
 public class VectXY {
 	public double	x, y;
 	
@@ -7,14 +9,35 @@ public class VectXY {
 		this(0.0, 0.0);
 	}
 	
+	public VectXY(VectXY v) {
+		set(v);
+	}
+	
 	public VectXY(double x, double y) {
-		this.x = x;
-		this.y = y;
+		set(x, y);
 	}
 	
 	@Override
 	public VectXY clone() {
 		return new VectXY(x, y);
+	}
+	
+	public void set(VectXY v) {
+		x = v.x;
+		y = v.y;
+	}
+	
+	public void set(double x, double y) {
+		this.x = x;
+		this.y = y;
+	}
+	
+	public void setX(double x) {
+		this.x = x;
+	}
+	
+	public void setY(double y) {
+		this.y = y;
 	}
 	
 	// these functions change the VectXY instance itself
@@ -57,6 +80,10 @@ public class VectXY {
 		divide(norm());
 	}
 	
+	public double dotProduct(VectXY v) {
+		return x * v.x + y * v.y;
+	}
+	
 	// these functions preserve the data and return a new instance of VectXY;
 	
 	public static VectXY add(VectXY v1, VectXY v2) {
@@ -89,5 +116,17 @@ public class VectXY {
 	
 	public static VectXY normalize(VectXY v) {
 		return divide(v, norm(v));
+	}
+	
+	public double dotProduct(VectXY v1, VectXY v2) {
+		return v1.x * v2.x + v1.y * v2.y;
+	}
+	
+	public static VectXY sum(Set<? extends VectXY> vectXYSet) {
+		VectXY sumVect = new VectXY();
+		for (VectXY v : vectXYSet) {
+			sumVect.add(v);
+		}
+		return sumVect;
 	}
 }

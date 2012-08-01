@@ -7,7 +7,8 @@ import java.util.Random;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import listeners.PaintPanelListener;
+import observer.PaintPanelListener;
+
 
 public class PaintPanel extends JPanel {
 	private static final long	serialVersionUID	= -7295356920540343651L;

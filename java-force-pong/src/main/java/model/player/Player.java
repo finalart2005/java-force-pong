@@ -3,15 +3,17 @@ package model.player;
 import model.Game;
 import model.entity.Entity;
 
-public class Player extends Entity {
+public abstract class Player implements Entity {
 	private String		name;
 	private int			lives;
-	private PlayerArea	playerArea;
 	private PlayerBoard	playerBoard;
+	private Game		game;
 	
-	public Player(String name, Game game) {
-		super(game);
+	public Player(String name, int lives, Game game) {
 		this.name = name;
+		this.lives = lives;
+		
+		this.game = game;
 	}
 	
 	public String getName() {
@@ -22,10 +24,20 @@ public class Player extends Entity {
 		return lives;
 	}
 	
-	public int lowerLives() {
-		for (int i = 5; i > 0; i--) {
-			lives--;
-		}
-		return lives;
+	public void increaseLives() {
+		lives++;
+	}
+	
+	public void decreaseLives() {
+		lives--;
+	}
+	
+	public PlayerBoard getPlayerBoard() {
+		return playerBoard;
+	}
+	
+	@Override
+	public Game getGame() {
+		return game;
 	}
 }

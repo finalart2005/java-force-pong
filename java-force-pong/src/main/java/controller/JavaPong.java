@@ -1,25 +1,20 @@
 package controller;
 
+import javax.swing.SwingUtilities;
+
 import model.Game;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import view.MainWindow;
 
-public class JavaPong {
-	private static final Logger	log	= LoggerFactory.getLogger(JavaPong.class);
-	
-	private final Game			game;
-	
-	private JavaPong() {
-		game = new Game();
-		new MainWindow(512, 512, game);
+public class JavaPong implements Runnable {
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new JavaPong());
 	}
 	
-	public static void main(String[] args) {
-		System.out.println("Tim is a frickin' moron!");
+	@Override
+	public void run() {
+		MainWindow mainWindow = new MainWindow(512, 512, new Game());
 		
-		new JavaPong();
+		mainWindow.setLocationRelativeTo(null);
+		mainWindow.setVisible(true);
 	}
 }

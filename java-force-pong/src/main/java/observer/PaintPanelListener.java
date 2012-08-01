@@ -1,4 +1,4 @@
-package listeners;
+package observer;
 
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -14,13 +14,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import view.PaintPanel;
-import view.MainWindow;
 
 public class PaintPanelListener extends MouseInputAdapter implements ActionListener, ComponentListener {
 	private static final Logger	log				= LoggerFactory.getLogger(PaintPanelListener.class);
 	
 	private PaintPanel			paintPanel;
-	private MainWindow				window;
 	
 	public Point				mouseLocation	= new Point();
 	
@@ -30,8 +28,6 @@ public class PaintPanelListener extends MouseInputAdapter implements ActionListe
 	
 	public PaintPanelListener(PaintPanel paintPanel) {
 		this.paintPanel = paintPanel;
-		window = paintPanel.window;
-		window.getGame().getTimer().addActionListener(this);
 	}
 	
 	@Override
@@ -49,20 +45,21 @@ public class PaintPanelListener extends MouseInputAdapter implements ActionListe
 	}
 	
 	@Override
-	public void mouseClicked(MouseEvent e) {
-		paintPanel.repaint();
-	}
+	public void mouseClicked(MouseEvent e) {}
 	
 	@Override
-	public void mouseEntered(MouseEvent e) {
-	}
+	public void mouseEntered(MouseEvent e) {}
 	
 	@Override
-	public void mouseExited(MouseEvent e) {
-	}
+	public void mouseExited(MouseEvent e) {}
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
+		leftButton = e.getButton() == MouseEvent.BUTTON1 ? true : leftButton;
+		middleButton = e.getButton() == MouseEvent.BUTTON2 ? true : middleButton;
+		rightButton = e.getButton() == MouseEvent.BUTTON3 ? true : rightButton;
+		
+		log.info("Some button was pressed! Waaaaaa!");
 	}
 	
 	@Override
@@ -71,30 +68,24 @@ public class PaintPanelListener extends MouseInputAdapter implements ActionListe
 		middleButton = e.getButton() == MouseEvent.BUTTON2 ? false : middleButton;
 		rightButton = e.getButton() == MouseEvent.BUTTON3 ? false : rightButton;
 		
-		log.info("Some button was pressed! Waaaaaa!");
+		log.info("Some button was released! Waaaaaa!");
 	}
 	
 	@Override
-	public void mouseWheelMoved(MouseWheelEvent e) {
-	}
+	public void mouseWheelMoved(MouseWheelEvent e) {}
 	
-	public void actionPerformed(ActionEvent e) {
-		// paintPanel.phase = (paintPanel.phase + .05) % 1;
-		if (e.getSource() == window.getGame().getTimer()) {
-			paintPanel.window.getGame().tick();
-			paintPanel.repaint();
-		}
-	}
+	@Override
+	public void actionPerformed(ActionEvent e) {}
 	
-	public void componentHidden(ComponentEvent arg0) {
-	}
+	@Override
+	public void componentHidden(ComponentEvent arg0) {}
 	
-	public void componentMoved(ComponentEvent arg0) {
-	}
+	@Override
+	public void componentMoved(ComponentEvent arg0) {}
 	
-	public void componentResized(ComponentEvent arg0) {
-	}
+	@Override
+	public void componentResized(ComponentEvent arg0) {}
 	
-	public void componentShown(ComponentEvent arg0) {
-	}
+	@Override
+	public void componentShown(ComponentEvent arg0) {}
 }
