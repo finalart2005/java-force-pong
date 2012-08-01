@@ -1,0 +1,58 @@
+game:
+
+when main menu shows, special background
+
+when ingame menu shows, show game on background, paused, so no physics, but do show
+  animations
+
+menu extends graphical layer
+  
+entities:
+  - completely inactive object (background and playing field)
+  - inactive solid object
+     - deflectors (circular or linear)
+  - movable solid object
+     - deflectors (circular or linear)
+	 - external forces
+forces:
+  - gravity
+  - air resistance
+  - attractive force (for example towards a paddle)
+  * all forces have update() function
+
+drawing: create clones of graphical objects, put in list, send to GUI, draw in order
+  of list order
+
+paddles moved by external force, not directly
+every object has drag
+every object has air resistance
+how to keep ball moving? what if gravity rotates, how to prevent ball from staying
+  in the middle, how to keep the game interesting?
+
+game has to be started/made FROM the menu, so starting the program WON'T start a game!
+
+time is kept by a timer, only when timer changes by a certain amount (for example more
+  than 1/100 of a second) a new state will be drawn to prevent infinite GUI updates
+  (max FPS)
+  state is chosen from statelist interpolating which of the states should be drawn for
+  the next timepoint for the smoothest animation
+
+simulator
+  - constantly calculates new states with some optimized dynamic engine
+  - grabs current mouse position from GUI
+  - GUI updates its mouse position independent of simulator
+  - mouse position updates over internet is very very very difficult, think about that
+    - only way I can think of right now: let each player update its mouse position to
+	    the server, and let the server send back GUI updates, server maintains the game
+
+game is a finite state machine, several state objects represent different states of the
+  game, like a start count state, a game state, an intermediate animation, another game
+  state, and an end state. Each state has its own entities and animations, and each
+  state has its own simulator object, making it possible to enable physics in a non
+  game state. Therefore these animations should be both time and simulator driven.
+
+how to deal with slow computers that have weird sim behaviour? Maybe not run the game
+  at all on those computers? :p
+
+
+  
