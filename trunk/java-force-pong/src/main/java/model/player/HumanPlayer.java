@@ -4,9 +4,7 @@ import model.Game;
 
 public class HumanPlayer extends Player {
 	
-	public HumanPlayer(String name, Game game) {
-		super(name, game);
-		// TODO Auto-generated constructor stub
+	public HumanPlayer(String name, int lives, Game game) {
+		super(name, lives, game);
 	}
-	
 }

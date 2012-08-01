@@ -10,25 +10,21 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-import listeners.MenuListener;
 import model.Game;
+import observer.action.AboutDialogAction;
+import observer.action.ExitAction;
+import observer.action.PauseGameAction;
 
+@SuppressWarnings("serial")
 public class MainWindow extends JFrame {
-	private Game			game;
-	private PaintPanel		paintPanel;
-	private MenuListener	menuListener;
+	private Game		game;
+	private PaintPanel	paintPanel;
 	
-	private boolean			setPause	= false;
-	
-	public MainWindow(final int width, final int height, Game game) {
+	public MainWindow(int width, int height, Game game) {
 		super("Java Force Pong");
 		this.game = game;
 		
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				createAndShowGUI(width, height);
-			}
-		});
+		createAndShowGUI(width, height);
 	}
 	
 	public Game getGame() {
@@ -54,32 +50,35 @@ public class MainWindow extends JFrame {
 		contentPane.validate();
 		
 		// Set up the menu bar, which appears above the content pane.
-		menuListener = new MenuListener(this, game);
 		JMenuBar menuBar = new JMenuBar();
-		JMenu fileMenu = new JMenu("File");
-		JMenuItem optionsMenuItem = new JMenuItem("Options");
-		optionsMenuItem.addActionListener(menuListener);
-		JMenu helpMenu = new JMenu("Help");
 		
-		JMenuItem startMenuItem = new JMenuItem("Start");
-		startMenuItem.addActionListener(menuListener);
+		// File menu
+		JMenu fileMenu = new JMenu("File");
+		
+		JMenuItem startMenuItem = new JMenuItem(new StartGameAction(game));
 		fileMenu.add(startMenuItem);
 		
-		JMenuItem pauseMenuItem = new JMenuItem("Pause");
-		pauseMenuItem.addActionListener(menuListener);
+		JMenuItem pauseMenuItem = new JMenuItem(new PauseGameAction(game));
 		fileMenu.add(pauseMenuItem);
 		
-		JMenuItem exitMenuItem = new JMenuItem("Exit");
-		exitMenuItem.addActionListener(menuListener);
+		JMenuItem exitMenuItem = new JMenuItem(new ExitAction(this));
 		fileMenu.add(exitMenuItem);
 		
-		JMenuItem aboutMenuItem = new JMenuItem("About");
-		aboutMenuItem.addActionListener(menuListener);
+		menuBar.add(fileMenu);
+		
+		// Options menu
+		JMenuItem optionsMenuItem = new JMenuItem(new OptionsDialogAction());
+		
+		menuBar.add(optionsMenuItem);
+		
+		// Help menu
+		JMenu helpMenu = new JMenu("Help");
+		
+		JMenuItem aboutMenuItem = new JMenuItem(new AboutDialogAction());
 		helpMenu.add(aboutMenuItem);
 		
-		menuBar.add(fileMenu);
-		menuBar.add(optionsMenuItem);
 		menuBar.add(helpMenu);
+		
 		setJMenuBar(menuBar);
 		
 		// Show the window.

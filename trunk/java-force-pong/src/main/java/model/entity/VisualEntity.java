@@ -1,29 +1,12 @@
 package model.entity;
 
-import model.Game;
-import model.util.Image;
+import java.awt.Graphics;
+
+import model.util.ScreenTransform;
 import model.util.VectXY;
 
-public class VisualEntity extends Entity {
+public interface VisualEntity extends Entity {
+	public VectXY getPos();
 	
-	private VectXY		pos;
-	private Image	image;
-	
-	public VisualEntity(VectXY pos, Image image, Game game) {
-		super(game);
-		this.pos = pos.clone();
-		this.image = image;
-	}
-	
-	public Image getImage() {
-		return image;
-	}
-	
-	public void setPos(VectXY pos) {
-		this.pos = pos.clone();
-	}
-	
-	public VectXY getPos() {
-		return pos;
-	}
+	public void paint(Graphics g, ScreenTransform sct);
 }
