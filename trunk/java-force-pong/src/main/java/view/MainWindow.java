@@ -1,8 +1,6 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.Dimension;
+import java.awt.GridBagLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -13,42 +11,57 @@ import javax.swing.JPanel;
 import model.Game;
 import observer.action.AboutDialogAction;
 import observer.action.ExitAction;
+import observer.action.OptionsDialogAction;
 import observer.action.PauseGameAction;
+import observer.action.StartGameAction;
+import controller.GameSim;
 
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame {
 	private Game		game;
-	private PaintPanel	paintPanel;
+	private GamePanel	gamePanel;
 	
-	public MainWindow(int width, int height, Game game) {
+	public MainWindow(Game game) {
 		super("Java Force Pong");
 		this.game = game;
 		
-		createAndShowGUI(width, height);
+		createAndShowGUI();
+		
+		startGame();
+	}
+	
+	private void startGame() {
+		GameSim gameSim = new GameSim(game, gamePanel);
+		gameSim.execute();
 	}
 	
 	public Game getGame() {
 		return game;
 	}
 	
-	private void createAndShowGUI(int width, int height) {
+	private void createAndShowGUI() {
 		// Create and set up the window.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
 		
 		// Set up the content pane, where the "main GUI" lives.
-		Container contentPane = getContentPane();
-		JPanel frameContents = new JPanel();
-		frameContents.setLayout(new BorderLayout(5, 5));
+		JPanel contentPane = new JPanel(new GridBagLayout());
 		
 		// Start creating and adding components.
-		paintPanel = new PaintPanel(this);
-		paintPanel.setPreferredSize(new Dimension(width, height));
+		gamePanel = new GamePanel(game);
 		
 		// Adding components to JPanel, which is then added to the contentPane
-		frameContents.add(BorderLayout.CENTER, paintPanel);
-		contentPane.add(frameContents);
-		contentPane.validate();
+		contentPane.add(gamePanel);
 		
+		add(contentPane);
+		
+		setJMenuBar(createMenuBar());
+		
+		// Show the window.
+		pack();
+	}
+	
+	private JMenuBar createMenuBar() {
 		// Set up the menu bar, which appears above the content pane.
 		JMenuBar menuBar = new JMenuBar();
 		
@@ -61,15 +74,20 @@ public class MainWindow extends JFrame {
 		JMenuItem pauseMenuItem = new JMenuItem(new PauseGameAction(game));
 		fileMenu.add(pauseMenuItem);
 		
+		fileMenu.addSeparator();
+		
 		JMenuItem exitMenuItem = new JMenuItem(new ExitAction(this));
 		fileMenu.add(exitMenuItem);
 		
 		menuBar.add(fileMenu);
 		
 		// Options menu
-		JMenuItem optionsMenuItem = new JMenuItem(new OptionsDialogAction());
+		JMenu optionsMenu = new JMenu("Options");
 		
-		menuBar.add(optionsMenuItem);
+		JMenuItem optionsMenuItem = new JMenuItem(new OptionsDialogAction());
+		optionsMenu.add(optionsMenuItem);
+		
+		menuBar.add(optionsMenu);
 		
 		// Help menu
 		JMenu helpMenu = new JMenu("Help");
@@ -79,10 +97,6 @@ public class MainWindow extends JFrame {
 		
 		menuBar.add(helpMenu);
 		
-		setJMenuBar(menuBar);
-		
-		// Show the window.
-		pack();
-		setVisible(true);
+		return menuBar;
 	}
 }

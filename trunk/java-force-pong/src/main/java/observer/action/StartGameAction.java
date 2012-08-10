@@ -11,12 +11,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("serial")
-public class StartAction extends AbstractAction {
-	private static final Logger	log	= LoggerFactory.getLogger(StartAction.class);
+public class StartGameAction extends AbstractAction {
+	private static final Logger	log	= LoggerFactory.getLogger(StartGameAction.class);
 	
 	private Game				game;
 	
-	public StartAction(Game game) {
+	public StartGameAction(Game game) {
 		super("Start game");
 		
 		putValue(SHORT_DESCRIPTION, "Start game");
