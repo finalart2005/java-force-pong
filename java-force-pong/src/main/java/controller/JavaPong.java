@@ -12,7 +12,7 @@ public class JavaPong implements Runnable {
 	
 	@Override
 	public void run() {
-		MainWindow mainWindow = new MainWindow(512, 512, new Game());
+		MainWindow mainWindow = new MainWindow(new Game());
 		
 		mainWindow.setLocationRelativeTo(null);
 		mainWindow.setVisible(true);

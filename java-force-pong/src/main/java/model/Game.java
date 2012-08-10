@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,16 +9,13 @@ import model.entity.Entity;
 import model.player.Player;
 
 public class Game {
-	private List<Player>	playerList	= new ArrayList<Player>();
-	private List<Entity>	entityList	= new LinkedList<Entity>();
+	private List<Player>	playerList			= new ArrayList<Player>();
+	private List<Entity>	entityList			= new LinkedList<Entity>();
 	
-	public Game() {
-		start();
-	}
+	public Point			mouseLocation		= new Point();
+	public Point			newMouseLocation	= new Point();
 	
-	private void start() {
-		// TODO Auto-generated method stub
-	}
+	public Game() {}
 	
 	public List<Player> getPlayerList() {
 		return playerList;
